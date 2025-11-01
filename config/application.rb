@@ -10,6 +10,9 @@ module Binsr
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
+    
+    # Configure application to be API-only
+    config.api_only = true
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
@@ -22,6 +25,8 @@ module Binsr
     # in config/environments, which are processed later.
     #
     # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+    # config.eager_load_paths << Rails.root.join("extras")    
+    # Add app/pdfs to autoload paths
+    # config.autoload_paths << Rails.root.join("app", "pdfs")
   end
 end

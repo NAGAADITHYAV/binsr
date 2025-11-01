@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    Ascii85 (2.0.1)
     actioncable (7.1.6)
       actionpack (= 7.1.6)
       activesupport (= 7.1.6)
@@ -80,24 +81,13 @@ GEM
       mutex_m
       securerandom (>= 0.3)
       tzinfo (~> 2.0)
-    addressable (2.8.7)
-      public_suffix (>= 2.0.2, < 7.0)
+    afm (1.0.0)
     base64 (0.3.0)
     benchmark (0.5.0)
     bigdecimal (3.3.1)
-    bindex (0.8.1)
     bootsnap (1.18.6)
       msgpack (~> 1.2)
     builder (3.3.0)
-    capybara (3.40.0)
-      addressable
-      matrix
-      mini_mime (>= 0.1.3)
-      nokogiri (~> 1.11)
-      rack (>= 1.6.0)
-      rack-test (>= 0.6.3)
-      regexp_parser (>= 1.5, < 3.0)
-      xpath (~> 3.2)
     cgi (0.5.0)
     concurrent-ruby (1.3.5)
     connection_pool (2.5.4)
@@ -111,12 +101,9 @@ GEM
     erubi (1.13.1)
     globalid (1.3.0)
       activesupport (>= 6.1)
+    hashery (2.1.2)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
-    importmap-rails (2.2.2)
-      actionpack (>= 6.0.0)
-      activesupport (>= 6.0.0)
-      railties (>= 6.0.0)
     io-console (0.8.1)
     irb (1.15.3)
       pp (>= 0.6.0)
@@ -167,21 +154,32 @@ GEM
     nokogiri (1.18.10-x86_64-linux-musl)
       racc (~> 1.4)
     pdf-core (0.10.0)
+    pdf-reader (2.15.0)
+      Ascii85 (>= 1.0, < 3.0, != 2.0.0)
+      afm (>= 0.2.1, < 2)
+      hashery (~> 2.0)
+      ruby-rc4
+      ttfunk
     pp (0.6.3)
       prettyprint
     prawn (2.5.0)
       matrix (~> 0.4)
       pdf-core (~> 0.10.0)
       ttfunk (~> 1.8)
+    prawn-templates (0.1.2)
+      pdf-reader (~> 2.0)
+      prawn (~> 2.2)
     prettyprint (0.2.0)
     psych (5.2.6)
       date
       stringio
-    public_suffix (6.0.2)
     puma (7.1.0)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.2.3)
+    rack-cors (3.0.0)
+      logger
+      rack (>= 3.0.14)
     rack-session (2.1.1)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
@@ -225,56 +223,27 @@ GEM
       erb
       psych (>= 4.0.0)
       tsort
-    regexp_parser (2.11.3)
     reline (0.6.2)
       io-console (~> 0.5)
-    rexml (3.4.4)
-    rubyzip (3.2.1)
+    ruby-rc4 (0.1.5)
     securerandom (0.4.1)
-    selenium-webdriver (4.38.0)
-      base64 (~> 0.2)
-      logger (~> 1.4)
-      rexml (~> 3.2, >= 3.2.5)
-      rubyzip (>= 1.2.2, < 4.0)
-      websocket (~> 1.0)
-    sprockets (4.2.2)
-      concurrent-ruby (~> 1.0)
-      logger
-      rack (>= 2.2.4, < 4)
-    sprockets-rails (3.5.2)
-      actionpack (>= 6.1)
-      activesupport (>= 6.1)
-      sprockets (>= 3.0.0)
     sqlite3 (1.7.3-aarch64-linux)
     sqlite3 (1.7.3-arm-linux)
     sqlite3 (1.7.3-arm64-darwin)
     sqlite3 (1.7.3-x86_64-darwin)
     sqlite3 (1.7.3-x86_64-linux)
-    stimulus-rails (1.3.4)
-      railties (>= 6.0.0)
     stringio (3.1.7)
     thor (1.4.0)
     timeout (0.4.4)
     tsort (0.2.0)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
-    turbo-rails (2.0.20)
-      actionpack (>= 7.1.0)
-      railties (>= 7.1.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    web-console (4.2.1)
-      actionview (>= 6.0.0)
-      activemodel (>= 6.0.0)
-      bindex (>= 0.4.0)
-      railties (>= 6.0.0)
-    websocket (1.2.11)
     websocket-driver (0.8.0)
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    xpath (3.2.0)
-      nokogiri (~> 1.8)
     zeitwerk (2.7.3)
 
 PLATFORMS
@@ -292,20 +261,15 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
-  capybara
   debug
-  importmap-rails
   jbuilder
   prawn
+  prawn-templates
   puma (>= 5.0)
+  rack-cors
   rails (~> 7.1.3, >= 7.1.3.4)
-  selenium-webdriver
-  sprockets-rails
   sqlite3 (~> 1.4)
-  stimulus-rails
-  turbo-rails
   tzinfo-data
-  web-console
 
 RUBY VERSION
    ruby 3.3.3p89

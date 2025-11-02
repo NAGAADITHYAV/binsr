@@ -21,6 +21,10 @@ gem "rack-cors"
 gem "prawn"
 # Use existing PDF as template [https://github.com/prawnpdf/prawn-templates]
 gem "prawn-templates"
+# For image dimension calculation
+gem "mini_magick"
+
+gem 'combine_pdf'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
